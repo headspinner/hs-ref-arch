@@ -1,0 +1,22 @@
+﻿<#@ template language="C#v3.5" debug="False" hostspecific="True"  #>
+<#@ output extension=".cs" #>
+<#@ include file="SQLServer.ttinclude" #>
+<#
+    var tables = LoadTables();
+#>
+    
+<#  foreach(Table tbl in tables){#>    
+       
+	public class <#=tbl.ClassName#>DTO : BaseDTO
+	{
+        
+		<# foreach(var col in tbl.Columns){	#>        
+        <# if ((col.CleanName != "UpdateDate") && (col.CleanName != "CreateDate") && (col.CleanName != "Id") && 
+			(col.CleanName != "LockDate") && (col.CleanName != "UpdateUserId") && (col.CleanName != "CreateUserId") ) { #>
+        
+		  public <#=col.SysType#><#=CheckNullable(col)#> <#=col.CleanName#>  { get; set; }
+		 
+        <# } #>
+		<# } #>
+	}
+<#}#>

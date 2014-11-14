@@ -1,0 +1,125 @@
+﻿<#@ template language="C#v3.5" debug="False" hostspecific="True"  #>
+<#@ output extension=".sql" #>
+<#@ include file="SQLServer.ttinclude" #>
+<#
+    var tables = LoadTables();
+#>
+
+
+
+<#  foreach(Table tbl in tables){#>  
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO  
+      <# bool first=true; #>
+	Create PROCEDURE [dbo].[Save<#=tbl.ClassName#>](
+	<# first=true; foreach(var col in tbl.Columns) { #>		  
+	   <# if(col.CleanName!="UpdateDate" && col.CleanName !="CreateDate") { #><# if(!first){ #>,<# } #> @<#=col.CleanName#> <#=col.DataType#> <#=col.ColSize#> <#=CheckNullableSP(col)#> <# if(col.CleanName == tbl.PrimaryKey) {#> output <#}#> <# if(col.CleanName == "LockDate") {#> output <#}#> <# first=false; } #><# } #>
+		
+		,@CreateDate datetime2 output
+		,@UpdateDate datetime2 output)
+		AS
+		BEGIN
+		   SET NOCOUNT ON
+			 
+
+			declare @now datetime
+				set @now = getdate()
+	
+			declare @created datetime
+				set @created = @now
+	
+			declare @updated datetime
+				set @updated = @now
+  
+			declare @nextLockDate datetime
+				set @nextLockDate = @now
+
+		   if @<#=tbl.PrimaryKey#> = 0   
+				begin
+				set @updated=null
+				  INSERT INTO [<#=tbl.ClassName#>] (				   
+				<#  first=true; foreach(var col in tbl.Columns) { #> 
+				<# if(col.CleanName != tbl.PrimaryKey && col.CleanName!="UpdateDate" && col.CleanName!="UpdateUserId") { #>
+				<# if(!first){ #>,<# } #> <#=col.CleanName#>  <# first=false; } #><# } #>
+				) Values (				
+				<#  first=true; foreach(var col in tbl.Columns) { #> 
+				 <# if(col.CleanName != tbl.PrimaryKey && col.CleanName!="UpdateDate" && col.CleanName!="UpdateUserId") { #>
+				<# if(!first){ #>,<# } #> <# if (col.CleanName=="CreateDate") { #> @created <# } else if (col.CleanName=="LockDate") { #> @nextLockDate <# } else { #> @<#=col.CleanName#> <# } #> <# first=false; } #><# } #>)
+				set @<#=tbl.PrimaryKey#> = SCOPE_IDENTITY()
+
+				set @CreateDate = @created
+				end
+		   else
+				begin
+				  
+	 
+			  UPDATE [<#=tbl.ClassName#>]
+			  Set <#  first=true; foreach(var col in tbl.Columns) { #> 
+			  <# if(col.CleanName != tbl.PrimaryKey  && col.CleanName!="CreateDate" && col.CleanName!="CreateUserId") { #>
+			  <# if(!first){ #>,<# } #> <# if(col.CleanName=="UpdateDate") { #> [<#=col.CleanName#>] = @updated <# } else if (col.CleanName=="LockDate") { #>[<#=col.CleanName#>] = @nextLockDate <# } else { #>[<#=col.CleanName#>] = @<#=col.CleanName#> <# } #> <# first=false; } #>
+			  <# } #>  
+
+			  Where  [<#=tbl.PrimaryKey#>] = @<#=tbl.PrimaryKey#> AND [LockDate] = @LockDate
+
+			  set @UpdateDate  = @updated
+
+				end
+		
+		set @LockDate=@nextLockDate
+
+		IF @@ROWCOUNT <> 0 
+		BEGIN 
+			ROLLBACK ;
+			RAISERROR(  'CONCURRENCY CHECK', 16, 1);
+		END
+END
+
+GO
+
+Grant Exec On [dbo].[Save<#=tbl.ClassName#>] to appRole
+
+GO
+Create PROCEDURE [dbo].[Get<#=tbl.ClassName#>ById](
+	@<#=tbl.PrimaryKey#>  int)
+AS
+BEGIN
+   SET NOCOUNT ON
+   
+   
+	   
+		   SELECT 
+			   <#  first=true; foreach(var col in tbl.Columns) { #> 
+				<# if(!first){ #>,<# } #> [<#=col.CleanName#>] <# first=false; } #>
+			  FROM  [<#=tbl.ClassName#>] (nolock)
+			WHERE
+			  [<#=tbl.PrimaryKey#>] = @<#=tbl.PrimaryKey#>
+	   
+    
+END
+GO
+
+Grant Exec On [dbo].[Get<#=tbl.ClassName#>ById] to appRole
+GO
+
+Create PROCEDURE [dbo].[Delete<#=tbl.ClassName#>](
+	@<#=tbl.PrimaryKey#>  int,
+	@LockDate datetime )
+AS
+BEGIN
+   SET NOCOUNT ON
+
+   Delete From  
+		[<#=tbl.ClassName#>] 
+	Where
+      [<#=tbl.PrimaryKey#>] =  @<#=tbl.PrimaryKey#> and [LockDate] = @LockDate
+
+	Select @@ROWCOUNT
+END
+GO
+
+Grant Exec On [dbo].[Delete<#=tbl.ClassName#>] to appRole
+GO
+<#}#>

@@ -1,0 +1,5 @@
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.DTO\bin\Debug\HeadSpin.Reference.DTO.dll
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.DTO\bin\Debug\HeadSpin.Reference.DTO.pdb
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.DTO\obj\Debug\HeadSpin.Reference.DTO.csprojResolveAssemblyReference.cache
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.DTO\obj\Debug\HeadSpin.Reference.DTO.dll
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.DTO\obj\Debug\HeadSpin.Reference.DTO.pdb

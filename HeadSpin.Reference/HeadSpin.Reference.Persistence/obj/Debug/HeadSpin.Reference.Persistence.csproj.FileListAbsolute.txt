@@ -1,0 +1,17 @@
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\obj\Debug\HeadSpin.Reference.Persistence.csprojResolveAssemblyReference.cache
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\HeadSpin.Reference.Persistence.dll.config
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\HeadSpin.Reference.Persistence.dll
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\HeadSpin.Reference.Persistence.pdb
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\HeadSpin.Reference.DTO.dll
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.Configuration.dll
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.dll
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.Providers.Default.dll
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\HeadSpin.Reference.DTO.pdb
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.pdb
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.xml
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.Configuration.pdb
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.Configuration.xml
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.Providers.Default.pdb
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\bin\Debug\Insight.Database.Providers.Default.xml
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\obj\Debug\HeadSpin.Reference.Persistence.dll
+C:\Headspin\HeadSpin.Reference\HeadSpin.Reference.Persistence\obj\Debug\HeadSpin.Reference.Persistence.pdb
