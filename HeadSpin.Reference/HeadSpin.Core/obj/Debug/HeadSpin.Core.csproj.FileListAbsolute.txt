@@ -5,3 +5,10 @@ C:\Headspin\HeadSpin.Reference\HeadSpin.Core\bin\Debug\Newtonsoft.Json.dll
 C:\Headspin\HeadSpin.Reference\HeadSpin.Core\bin\Debug\Newtonsoft.Json.xml
 C:\Headspin\HeadSpin.Reference\HeadSpin.Core\obj\Debug\HeadSpin.Core.dll
 C:\Headspin\HeadSpin.Reference\HeadSpin.Core\obj\Debug\HeadSpin.Core.pdb
+C:\Headspin\hs-ref-arch\HeadSpin.Reference\HeadSpin.Core\bin\Debug\HeadSpin.Core.dll
+C:\Headspin\hs-ref-arch\HeadSpin.Reference\HeadSpin.Core\bin\Debug\HeadSpin.Core.pdb
+C:\Headspin\hs-ref-arch\HeadSpin.Reference\HeadSpin.Core\bin\Debug\Newtonsoft.Json.dll
+C:\Headspin\hs-ref-arch\HeadSpin.Reference\HeadSpin.Core\bin\Debug\Newtonsoft.Json.xml
+C:\Headspin\hs-ref-arch\HeadSpin.Reference\HeadSpin.Core\obj\Debug\HeadSpin.Core.csprojResolveAssemblyReference.cache
+C:\Headspin\hs-ref-arch\HeadSpin.Reference\HeadSpin.Core\obj\Debug\HeadSpin.Core.dll
+C:\Headspin\hs-ref-arch\HeadSpin.Reference\HeadSpin.Core\obj\Debug\HeadSpin.Core.pdb
